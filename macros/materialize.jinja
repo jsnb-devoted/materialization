@@ -22,6 +22,10 @@
     insert into {{ table_name }} {{ query }}
 {%- endmacro -%}
 
+{%- macro gen_transient_table(table_name, query) -%}
+    create or replace transient table {{ table_name }} as ({{ query }})
+{%- endmacro -%}
+
 {%- macro strip_quotes(s) -%}
     {%- set stripped = s -%}
     {%- if stripped[0] == '"' and stripped[-1] == '"' -%}
