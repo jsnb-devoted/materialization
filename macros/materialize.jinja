@@ -101,6 +101,8 @@
     {%- elif builtin.materialization == "recursive-table" -%}
         {# Snowflake doesn't have a specific 'recursive table' concept; adjust as needed #}
         {{ gen_table(table_name, query) }}
+    {%- elif builtin.materialization == "transient-table" -%}
+        {{ gen_transient_table(table_name, query) }}
     {%- endif -%}
 
     {# all variables in scope #}
